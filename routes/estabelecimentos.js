@@ -14,6 +14,10 @@ router.post('/', async (req, res) => {
     }
   });
 
+  if (latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
+    return res.status(400).send("Latitude ou longitude inválida.");
+  }  
+
   if (nearby) {
     return res.status(400).send("Já existe um estabelecimento em um raio menor que 2km.");
   }
