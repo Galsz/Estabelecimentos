@@ -31,6 +31,17 @@ router.post('/', async (req, res) => {
   });
 
   await novo.save();
+
+  const Blockchain = require('../models/blockchain');
+  const blockchain = new Blockchain();
+
+  await blockchain.addBlock({
+    id: novo._id,
+    nome: novo.nome,
+    latitude: latitude,
+    longitude: longitude
+  });
+
   res.status(201).send("Estabelecimento cadastrado com sucesso!");
 });
 

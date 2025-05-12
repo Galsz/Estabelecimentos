@@ -13,6 +13,9 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 const estabelecimentosRouter = require('./routes/estabelecimentos');
 app.use('/api/estabelecimentos', estabelecimentosRouter);
 
+const blockchainRoutes = require('./routes/blockchain');
+app.use('/blockchain', blockchainRoutes);
+
 app.listen(3000, () => {
   console.log('Servidor rodando em http://localhost:3000');
 });
